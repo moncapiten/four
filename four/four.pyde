@@ -1,6 +1,6 @@
 def setup():
     size(500, 400)
-    background(0)
+    background(1) # DO NOT USE 0
     stroke(255)
 
 
@@ -14,13 +14,15 @@ def RGB2Luma(RGBvalue):
 
 def draw():
     noFill()
-    ellipse(width * 0.5, height * 0.5, 250, 100)
+    ellipse(220,220,150,150) #circle 1
+    ellipse(155,140,100,100) #circle 2
+    ellipse(290,130,100,100) #circle 3
     
     loadPixels()
     
     print(~(pixels[0]))
     print( [ (~ -pixels[0]&0xff0000)/65535, (~ -pixels[0]&0x00ff00)/255, (~ -pixels[0]&0x0000ff)+1 ] )
-    with open("demofile.txt", "a") as f:
+    with open("mario.txt", "w") as f:
         for i in range(0, len(pixels), width):
             
             f.write(str( RGB2Luma(pixels[i]) ))
